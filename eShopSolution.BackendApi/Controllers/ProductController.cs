@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eShopSolution.Application.Catalog.Products;
 
 namespace eShopSolution.BackendApi.Controllers
 {
@@ -11,5 +12,17 @@ namespace eShopSolution.BackendApi.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        private readonly IPublicProductService _publicProductService;
+
+        public ProductController(IPublicProductService publicProductService)
+        {
+            _publicProductService = publicProductService;
+        }
+
+        public async Task<IActionResult> Get()
+        {
+            var product = await _publicProductService.GetAll();
+            return Ok(product);
+        }
     }
 }
