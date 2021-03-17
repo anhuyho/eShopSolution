@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eShopSolution.Application.Catalog.Products;
 using eShopSolution.Data.EF;
 using eShopSolution.Utilities.Constants;
 using Microsoft.EntityFrameworkCore;
@@ -32,8 +33,13 @@ namespace eShopSolution.BackendApi
             services.AddDbContext<EShopDbContext>(option =>
                 option.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
 
+            services.AddTransient<IPublicProductService, PublicProductService>();
 
             services.AddControllers();
+            //services.AddControllersWithViews()
+            //    .AddNewtonsoftJson(options =>
+            //        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //    );
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eShopSolution.BackendApi", Version = "v1" });
