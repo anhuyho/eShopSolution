@@ -9,7 +9,6 @@ using eShopSolution.Data.EF;
 using eShopSolution.Data.Entities;
 using eShopSolution.Utilities.Exceptions;
 using eShopSolution.ViewModels.Catalog.Products;
-using eShopSolution.ViewModels.Catalog.Products.Manage;
 using eShopSolution.ViewModels.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +31,7 @@ namespace eShopSolution.Application.Catalog.Products
 
         Task<List<ProductViewModel>> GetAll();
 
-        Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
 
         Task<int> AddImages(int productId, List<IFormFile> files);
 
@@ -186,7 +185,7 @@ namespace eShopSolution.Application.Catalog.Products
             throw new System.NotImplementedException();
         }
 
-        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request)
+        public async Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request)
         {
             var query = from p in _context.Products
                 join pt in _context.ProductTranslations on p.Id equals pt.ProductId
