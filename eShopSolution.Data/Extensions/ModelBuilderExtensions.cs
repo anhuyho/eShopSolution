@@ -1,8 +1,10 @@
-﻿using System;
-using eShopSolution.Data.Entities;
+﻿using eShopSolution.Data.Entities;
 using eShopSolution.Data.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace eShopSolution.Data.Extensions
 {
@@ -100,14 +102,14 @@ namespace eShopSolution.Data.Extensions
                 Id = adminId,
                 UserName = "admin",
                 NormalizedUserName = "admin",
-                Email = "tedu.international@gmail.com",
-                NormalizedEmail = "tedu.international@gmail.com",
+                Email = "ho.an.huy@live.com",
+                NormalizedEmail = "ho.an.huy@live.com",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
                 SecurityStamp = string.Empty,
-                FirstName = "Toan",
-                LastName = "Bach",
-                Dob = new DateTime(2020, 01, 31)
+                FirstName = "Huy",
+                LastName = "Ho",
+                Dob = new DateTime(2020,01,31)
             });
 
             modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
@@ -117,7 +119,7 @@ namespace eShopSolution.Data.Extensions
             });
         }
 
-
+        
 
 
     }

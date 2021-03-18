@@ -15,8 +15,8 @@ namespace eShopSolution.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -83,21 +83,21 @@ namespace eShopSolution.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("RoleId", "UserId");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
 
                     b.ToTable("AppUserRoles");
 
                     b.HasData(
                         new
                         {
-                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de")
+                            UserId = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
+                            RoleId = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc")
                         });
                 });
 
@@ -163,8 +163,8 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -180,7 +180,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = new Guid("8d04dce2-969a-435d-bba4-df3f325983dc"),
-                            ConcurrencyStamp = "9f2f0cbe-0e46-4e53-80b4-a7146a1c5d99",
+                            ConcurrencyStamp = "b8538e4e-2535-450c-bcd4-1211f875a8a8",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -210,13 +210,13 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -257,16 +257,16 @@ namespace eShopSolution.Data.Migrations
                         {
                             Id = new Guid("69bd714f-9576-45ba-b5b7-f00649be00de"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "939b9e19-8cf6-4330-aa6c-38eecc3b192c",
+                            ConcurrencyStamp = "e349ca08-fe4b-487b-b2f6-4b0ecc4d2951",
                             Dob = new DateTime(2020, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "tedu.international@gmail.com",
+                            Email = "ho.an.huy@live.com",
                             EmailConfirmed = true,
-                            FirstName = "Toan",
-                            LastName = "Bach",
+                            FirstName = "Huy",
+                            LastName = "Ho",
                             LockoutEnabled = false,
-                            NormalizedEmail = "tedu.international@gmail.com",
+                            NormalizedEmail = "ho.an.huy@live.com",
                             NormalizedUserName = "admin",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOYxA3/CztFvFWuVl4hSTxkRQ6Oll5A14OCScTYfzZOTZbNTdN3DAdpTymhn6XWVfQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEUywyt0020P0x+9C9xm7BLxHuPaxy+p2qBbJs7eLYMz0yUwhanPc3PrlI8WcvKjVw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -365,27 +365,27 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("LanguageId")
                         .IsRequired()
+                        .HasColumnType("varchar(5)")
                         .HasMaxLength(5)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(5)");
+                        .IsUnicode(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("SeoAlias")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("SeoDescription")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("SeoTitle")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.HasKey("Id");
 
@@ -449,8 +449,8 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("Message")
                         .IsRequired()
@@ -458,13 +458,13 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -477,17 +477,17 @@ namespace eShopSolution.Data.Migrations
             modelBuilder.Entity("eShopSolution.Data.Entities.Language", b =>
                 {
                     b.Property<string>("Id")
+                        .HasColumnType("varchar(5)")
                         .HasMaxLength(5)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(5)");
+                        .IsUnicode(false);
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
@@ -522,24 +522,24 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("ShipAddress")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("ShipEmail")
                         .IsRequired()
+                        .HasColumnType("varchar(50)")
                         .HasMaxLength(50)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(50)");
+                        .IsUnicode(false);
 
                     b.Property<string>("ShipName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("ShipPhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -611,7 +611,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2021, 3, 16, 23, 48, 10, 705, DateTimeKind.Local).AddTicks(2482),
+                            DateCreated = new DateTime(2020, 3, 5, 21, 29, 33, 73, DateTimeKind.Local).AddTicks(6902),
                             OriginalPrice = 100000m,
                             Price = 200000m,
                             Stock = 0,
@@ -629,8 +629,8 @@ namespace eShopSolution.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Caption")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -640,8 +640,8 @@ namespace eShopSolution.Data.Migrations
 
                     b.Property<string>("ImagePath")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("bit");
@@ -694,27 +694,27 @@ namespace eShopSolution.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Details")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("LanguageId")
                         .IsRequired()
+                        .HasColumnType("varchar(5)")
                         .HasMaxLength(5)
-                        .IsUnicode(false)
-                        .HasColumnType("varchar(5)");
+                        .IsUnicode(false);
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("SeoAlias")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
 
                     b.Property<string>("SeoDescription")
                         .HasColumnType("nvarchar(max)");
@@ -855,10 +855,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppUser");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.CategoryTranslation", b =>
@@ -874,10 +870,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Language");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Order", b =>
@@ -887,8 +879,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.OrderDetail", b =>
@@ -904,10 +894,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.ProductImage", b =>
@@ -917,8 +903,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.ProductInCategory", b =>
@@ -934,10 +918,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.ProductTranslation", b =>
@@ -953,10 +933,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Language");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eShopSolution.Data.Entities.Transaction", b =>
@@ -966,49 +942,6 @@ namespace eShopSolution.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entities.AppUser", b =>
-                {
-                    b.Navigation("Carts");
-
-                    b.Navigation("Orders");
-
-                    b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entities.Category", b =>
-                {
-                    b.Navigation("CategoryTranslations");
-
-                    b.Navigation("ProductInCategories");
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entities.Language", b =>
-                {
-                    b.Navigation("CategoryTranslations");
-
-                    b.Navigation("ProductTranslations");
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entities.Order", b =>
-                {
-                    b.Navigation("OrderDetails");
-                });
-
-            modelBuilder.Entity("eShopSolution.Data.Entities.Product", b =>
-                {
-                    b.Navigation("Carts");
-
-                    b.Navigation("OrderDetails");
-
-                    b.Navigation("ProductImages");
-
-                    b.Navigation("ProductInCategories");
-
-                    b.Navigation("ProductTranslations");
                 });
 #pragma warning restore 612, 618
         }
